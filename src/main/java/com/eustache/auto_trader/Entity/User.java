@@ -2,9 +2,13 @@ package com.eustache.auto_trader.Entity;
 
 import java.util.UUID;
 
+import com.eustache.auto_trader.Helpers.Role;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -45,6 +49,9 @@ public class User {
     private String  password;
     @Column(name = "phone_number", nullable = false)
     private String  phoneNumber;
+    @Column(name = "role", nullable = false, length = 100)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     // Relationships
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

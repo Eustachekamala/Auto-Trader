@@ -2,6 +2,8 @@ package com.eustache.auto_trader.Entity;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -9,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,12 +36,12 @@ public class Address {
     private String zipCode;
 
     // Relationships
-    @OneToOne
+    @ManyToOne
     @JoinColumn(
-        name = "user_id", 
-        referencedColumnName = "id", 
-        foreignKey = @ForeignKey(name = "employee_id_fk")
+        name = "user_id",
+        nullable = false,
+        foreignKey = @ForeignKey(name = "user_id_fk")
     )
-    @Builder.Default
-    private User user = new User();
+    @JsonBackReference
+    private User user;
 }

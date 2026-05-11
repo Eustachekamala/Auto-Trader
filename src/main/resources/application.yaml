@@ -3,7 +3,7 @@ spring:
     name: auto_trader
   datasource:
     url: jdbc:postgresql://localhost:5434/auto_trader_db
-    username: postgres
+    username: eustache
     password: password
     driver-class-name: org.postgresql.Driver
   jpa:
@@ -12,5 +12,5 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        format_sql: true
+        '[format_sql]': true
         dialect: org.hibernate.dialect.PostgreSQLDialect
